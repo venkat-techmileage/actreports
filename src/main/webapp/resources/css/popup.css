@@ -1,0 +1,17 @@
+.pop-div
+		{
+			width:400px;
+			height:200px;
+			background-color:#e9e7f8;
+			padding-left:40px;
+			padding-top:50px;		
+		}
+		.pop-btns
+		{
+			padding-left: 75px;
+			padding-top: 45px;
+		}
+		.pop-label
+		{
+			color:#26352e;
+		}

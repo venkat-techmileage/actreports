@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util-3.0.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+        
+        <context:component-scan base-package="act.reports.*"></context:component-scan>
+        <context:annotation-config />
+        
+        <util:properties id="excelProps" location="classpath:excelHeaders.properties"/>
+        <!--  <util:properties id="urlProps" location="classpath:url.properties"/> 
+           
+        <bean id="restTemplate" class="org.springframework.web.client.RestTemplate"></bean>-->
+      
+        <context:property-placeholder location="WEB-INF/datasource.properties"/>
+	
+		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+			<property name="driverClassName" value="${driver.class}"></property>
+			<property name="url" value="${jdbc.url}"></property>
+			<property name="username" value="${jdbc.user}"></property>
+			<property name="password" value="${jdbc.pass}"></property>
+		</bean>
+        <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+    		<constructor-arg name="dataSource" ref="dataSource"/>
+    	</bean>
+    	 <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+      		<property name="dataSource"  ref="dataSource" />    
+   		</bean>
+    	<bean id="viewResolver1" class="org.springframework.web.servlet.view.XmlViewResolver">
+  			<property name="order" value="1"/>
+  			<property name="location" value="/WEB-INF/views.xml"/>
+       </bean>		
+		<bean id="viewResolver"
+      		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+    		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+    		<property name="order" value="2"/>
+    		<property name="prefix" value="/WEB-INF/views/"/>
+    		<property name="suffix" value=".jsp"/>
+		</bean>
+		<!-- <bean id="status" class="act.dispatcher.model.newservicecall.ServiceStatus"></bean> 
+		<bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/> -->
+		
+        <mvc:resources mapping="/resources/**" location="/resources/"/>
+        <mvc:annotation-driven/>
+        
+ </beans>
