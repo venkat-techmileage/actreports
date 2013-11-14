@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import act.reports.controller.DashboardController;
 import act.reports.model.AllInvoices;
 import act.reports.model.AllInvoicesList;
 import act.reports.model.InvoiceSearchCriteria;
@@ -35,8 +34,8 @@ public class AllInvoicesDAO {
 						"i.pickUpAddr_Address_Landmark,i.pickUpAddr_Address_Line1,i.pickUpAddr_Address_Line2,i.pickUpAddr_Address_City,i.pickUpAddr_Address_State," +
 						"i.pickUpAddr_Address_Zip,i.dropOffAddr_Address_Landmark,i.dropOffAddr_Address_Line1,i.dropOffAddr_Address_Line2,i.dropOffAddr_Address_City," +
 						"i.dropOffAddr_Address_State,i.dropOffAddr_Address_Zip,i.truckNo,i.driverId,sc.callRecevierId,ib.towCharge,ib.storageCharge,ib.laborCharge," +
-						"ib.mileageCharge,ib.winch_Charge,ib.miscCharge,ib.totalCharge,ib.isPaid from servicecallinfo sc,invoice i,invoice_billing ib," +
-						"invoice_vehicle iv where sc.serviceCallId = i.serviceCallId and i.invoiceId = ib.invoiceId and i.invoiceId=iv.invoiceId";
+						"ib.mileageCharge,ib.winch_Charge,ib.miscCharge,ib.totalCharge,ib.isPaid from ServiceCallInfo sc,Invoice i,Invoice_Billing ib," +
+						"Invoice_Vehicle iv where sc.serviceCallId = i.serviceCallId and i.invoiceId = ib.invoiceId and i.invoiceId=iv.invoiceId";
 		
 		final Float gateCharge = 0f;
 		final Float adminCharge = 0f;
