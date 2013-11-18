@@ -44,9 +44,9 @@ public class AllInvoicesController {
 	{
 		logger.info("In AllInvoicesController-exportInvoicesList(...) ...");
 		try{
-			logger.info("invoicesList.getInvoice().size() = "+invoicesList.getInvoice().size());
+			logger.info("invoicesList.getColCount() = "+invoicesList.getRecCount());			
 			model.addObject("excelDetails",invoicesHelper.convertInvoicesListAsExcelFormat(invoicesList));
-			model.addObject("excelHeaders",invoicesHelper.getinvoicesListExcelHeaders());			
+			model.addObject("excelHeaders",invoicesHelper.getinvoicesListExcelHeaders(invoicesList));			
 			model.addObject("fileName","Invoices_List.xls");
 			model.setViewName("excelView");
 		}catch(Exception e){

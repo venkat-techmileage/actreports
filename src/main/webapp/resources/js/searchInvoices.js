@@ -30,8 +30,8 @@ $(document).ready(function(){
 				$("#alphabetical").hide();
 				$("#dataGroup").show();
 				if($("#startDate").val()!="" && $("#endDate").val()!="" && ($("#serviceCallDate").is(":checked") || $("#releaseDate").is(":checked"))){
-					$('input:checkbox[name="checkAll"]').prop("checked", "checked");
-					$('input:checkbox[name="check"]').prop("checked", "checked");
+					//$('input:checkbox[name="checkAll"]').prop("checked", "checked");
+					//$('input:checkbox[name="check"]').prop("checked", "checked");
 					$('#alphabetical').find('input[type=checkbox]:checked').removeAttr('checked');
 					setCallListTable(global_callList);
 				}				
@@ -40,8 +40,8 @@ $(document).ready(function(){
 				$("#dataGroup").hide();
 				$("#alphabetical").show();
 				if($("#startDate").val()!="" && $("#endDate").val()!="" && ($("#serviceCallDate").is(":checked") || $("#releaseDate").is(":checked"))){
-					$('input:checkbox[name="checkAll"]').prop("checked", "checked");
-					$('input:checkbox[name="check"]').prop("checked", "checked");
+					//$('input:checkbox[name="checkAll"]').prop("checked", "checked");
+					//$('input:checkbox[name="check"]').prop("checked", "checked");
 					$('#dataGroup').find('input[type=checkbox]:checked').removeAttr('checked');
 					setCallListTable(global_callList);
 				}				
@@ -49,13 +49,22 @@ $(document).ready(function(){
 			
 			$("#go").click(function(){				
 				if($("#startDate").val()!="" && $("#endDate").val()!="" && ($("#serviceCallDate").is(":checked") || $("#releaseDate").is(":checked"))){
-				//$("#main-wrapper").show();
-				$('input:checkbox[name="checkAll"]').prop("checked", "checked");
-				$('input:checkbox[name="check"]').prop("checked", "checked");
-				if($("#byDataGroup").is(":checked"))
+				//$('input:checkbox[name="checkAll"]').prop("checked", "checked");
+				//$('input:checkbox[name="check"]').prop("checked", "checked");
+				if($("#byDataGroup").is(":checked")){
 					$('#alphabetical').find('input[type=checkbox]:checked').removeAttr('checked');
-				if($("#byAlphabetical").is(":checked"))
+					if($("div#dataGroup input:checkbox[name='check']:checked").length == 0) {
+						$('div#dataGroup input:checkbox[name="checkAll"]').prop("checked", "checked");
+						$('div#dataGroup input:checkbox[name="check"]').prop("checked", "checked");
+					}
+				}
+				if($("#byAlphabetical").is(":checked")){
 					$('#dataGroup').find('input[type=checkbox]:checked').removeAttr('checked');
+					if($("div#alphabetical input:checkbox[name='check']:checked").length == 0) {
+						$('div#alphabetical input:checkbox[name="checkAll"]').prop("checked", "checked");
+						$('div#alphabetical input:checkbox[name="check"]').prop("checked", "checked");
+					}
+				}
 				populateCallList();
 				$("#radioAll").prop("checked", "checked");
 				 $('input:text[name="searchInput"]').each(function(){
@@ -68,7 +77,7 @@ $(document).ready(function(){
 			
 			$("#invoiceExport").click(function() {
 				if($("#startDate").val()!="" && $("#endDate").val()!="" && ($("#serviceCallDate").is(":checked") || $("#releaseDate").is(":checked"))){
-					exportInvoicesList();
+					exportInvoicesList(global_callList);
 				}
 				else
 					alert("Invalid Date");
@@ -267,7 +276,7 @@ function GetKeys(obj) {
     return cols;
 }
 
-function setCallListTable(global_callList) {
+function setCallListTable(global_callList){
 	   callFilter=[];
 	   headers=[];
 	   $('input:checkbox[name="check"]:checked').each(function(){
@@ -284,29 +293,25 @@ function setCallListTable(global_callList) {
 	   }
 }
 
-function populateCallList()
-	{
+function populateCallList(){
 		$.ajax({
-			async: false,
-			method:"post",
-			url : "allInvoices/details",
-			dataType:"json",
-			contentType:"application/json",
-			data:callListqryToJSON(),
-			success:function(result)
-			{
-				global_callList=result;
-				setCallListTable(global_callList);
-					
-			},
-			error:function(error)
-			{
-				alert("error::"+error);
-			}
-		 
-		  });
-		
-	}
+		async: false,
+		method:"post",
+		url : "allInvoices/details",
+		dataType:"json",
+		contentType:"application/json",
+		data:callListqryToJSON(),
+		success:function(result)
+		{
+			global_callList=result;
+			setCallListTable(global_callList);
+		},
+		error:function(error)
+		{
+			alert("error::"+error);
+		}		 
+	});		
+}
 
 
 function callListqryToJSON()
@@ -324,11 +329,11 @@ function callListqryToJSON()
 				});
 			}
 	
-	function exportInvoicesList()
+	/*function exportInvoicesList()
 	{	
 		var exportInvoicesInfo = invoicesListTableToJSON();
 		var invoices_list = exportInvoicesInfo.invoicesListData;
-		var formData= '';
+		var formData = '';
 		for(i in invoices_list)
 		{
 			formData+='<input name="serviceCallDate" type="hidden" value="'+invoices_list[i].serviceCallDate+'"/>';
@@ -420,7 +425,7 @@ function callListqryToJSON()
 	}
 	function invoicesListTableToJSON()
 	{
-		var invoicesList = {invoicesListData:[]};		
+		var invoicesList = {invoicesListData:[]};	
 		$('#invoiceSearch tbody tr:gt(0)').each(function(){
 				var invoicesDesc={
 						serviceCallDate:$(this).children('td').eq(0).text(),
@@ -506,4 +511,32 @@ function callListqryToJSON()
 		});
 		
 		return invoicesList;
+	}*/
+
+	function exportInvoicesList(obj)
+	{
+		var formData = '';
+		var recCount = 0;
+		cols=[];
+		$('input:checkbox[name="check"]:checked').each(function(){
+		   cols.push($(this).val());
+		});
+
+		if(cols.length>0){
+		   recCount = '<input name="recCount" type="hidden" value="'+obj.allInvoices.length+'"/>';
+		   for (var j = 0; j < obj.allInvoices.length; j++) {
+			   var invoices = obj.allInvoices[j];
+			   for (var k = 0; k < cols.length; k++) {
+				   var columnName = cols[k];
+				   formData+='<input name="'+columnName+'" type="hidden" value="'+invoices[columnName]+'"/>';
+			   }
+			   $('body').append('<form id="notesTableForm"></form>');
+			   $('#notesTableForm').append(formData);
+			   $('#notesTableForm').append(recCount);
+			   $('#notesTableForm').attr("action","allInvoices/exportInvoicesList");
+			   $('#notesTableForm').attr("method","POST");
+			   $('#notesTableForm').submit();
+			   $('#notesTableForm').remove();
+		   }
+		}
 	}

@@ -4,6 +4,7 @@ import java.util.List;
 
 public class ExportInvoicesList {
 
+	private int recCount;
 	private List<String> serviceCallDate;
 	private List<String> invoice;
 	private List<String> requestedBy;
@@ -83,6 +84,12 @@ public class ExportInvoicesList {
 	private List<String> locked;
 	private List<String> closed;
 	
+	public int getRecCount() {
+		return recCount;
+	}
+	public void setRecCount(int recCount) {
+		this.recCount = recCount;
+	}
 	public List<String> getServiceCallDate() {
 		return serviceCallDate;
 	}
