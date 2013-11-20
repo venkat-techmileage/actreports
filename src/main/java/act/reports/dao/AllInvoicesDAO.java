@@ -45,8 +45,10 @@ public class AllInvoicesDAO {
 		if(criteria.getSearchQuery().equalsIgnoreCase("byServiceCallDate")){
 			   
 				   fromDate = DateUtility.convertAsMySqlDateTime(fromDate);
+				   logger.info("fromDate in AllInvoicesDAO-getAllInvoicesList() : "+fromDate);
 				   qryString+= " and sc.callCreatedTime>='"+fromDate+"'";
 				   toDate = DateUtility.convertAsMySqlDateTime(toDate);
+				   logger.info("toDate in AllInvoicesDAO-getAllInvoicesList() : "+toDate);
 				   qryString+= " and sc.callCreatedTime<='"+toDate+"'";
 				
 		}

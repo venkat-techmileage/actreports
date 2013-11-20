@@ -81,6 +81,7 @@ min-height:450px;
   margin:0;
   border-right:1px solid #c8c8c8;
   height:40px;
+  
  }
  
    #menu ul li a{
@@ -309,8 +310,7 @@ margin:4em 0;}
  /*---------- Common Form Elements Style----------------------*/
  
 	label{
-	font-weight:normal;
-	font-size:8px;
+	font-weight:bold;
 	   display: inline-block;
     vertical-align: middle;
 	  margin: 0 1em 0 0;
@@ -387,6 +387,9 @@ legend {
 
 .name{
 width:190px;}
+
+.mile{
+width:180px;}
 
 .password{
 width:190px;}
@@ -2181,19 +2184,11 @@ display:inline;}
 
 .map-three-fourth{
 width:65%;
-margin:0.5em 0 1em 0;
-background:#ffffff;
-height:auto;
-float:left;
-border:1px solid #ddddde;
-min-height:430px;
-padding-bottom:1em;
-
-}
+float:left;}
 
 .map-one-third{
-width:33%;
-float:right;}
+width:35%;
+float:left;}
 
 /*truck detials*/
 
@@ -2275,6 +2270,113 @@ text-align:left;
 	.map-2{
 	width:98%;
 	padding:1%;}
+	
+	/*report all invoice page*/
+	
+	#view-export-head{
+	width:97%;
+	cursor:pointer;
+	padding:1em;
+	margin:0.5em;
+	background:#f4f4f4 url('../images/plus-icon.png') no-repeat 98% 50%;
+	border:1px solid #dcdcdc;}
+	
+		#view-export-head h3{
+		margin:0 0 0 1%;
+		}
+	
+	#view-export-head:hover{
+	background:#e9e8e8 url('../images/plus-icon.png') no-repeat 98% 50%}
+	
+.active-toggle{
+	background:#e9e8e8 url('../images/cross-icon.png') no-repeat 98% 50%!important;}
+	
+	.view-export{
+	display:none;
+	position:relative;
+	border:1px solid #dcdcdc;
+	padding:1em;
+	width:97%;
+	margin:0 auto;}
+	
+	.view-export .act-checkbox{
+	margin:0 0.5em 0.3em 0;
+	}
+	
+    .view-export ul{
+		margin:0;
+		padding:0;}
+	.view-export ul li{
+	list-style-type:none;
+	float:left;
+	width:14%;}
+	
+	.view-export fieldset{
+	border:0;
+	}
+	
+	.all-invoice-table-wrapper{
+	margin:1% auto;
+	width:99%;
+	overflow:scroll;}
+	
+	.all-invoice-full-wrapper-controls{
+margin:0.5em;
+padding:1em;
+background:#f1f1f1;}
+
+.all-invoice-full-wrapper-controls fieldset{
+    margin: 0;
+    padding:0;
+    border:0;
+}
+
+.all-invoice-full-wrapper-controls h4{
+float:left;
+padding:0!important;
+margin:0 1em 0 0;
+color: #5F8A01;
+font-size: 16px;
+font-weight: bold;
+}
+
+.all-invoice-full-wrapper-controls .act-textfield-control{
+display:inline;
+margin:0 0.5em 0 0;}
+
+.all-invoice-full-wrapper-controls .act-select-control{
+display:inline;
+margin:0 0.5em 0 0;}
+
+.all-invoice-full-wrapper-controls .act-calender-control{
+display:inline;
+margin:0 0.5em 0 0;}
+
+.all-invoice-full-wrapper-controls .callrate-calenders{
+margin:0.5em 0 0 0;}
+
+.all-invoice-full-wrapper-controls .act-select-control label {
+	text-align:right;
+	margin:0 0.5em 0.5em 0;
+}
+
+.all-invoice-full-wrapper-controls .act-button-controls{
+display:inline;
+margin:0 0.5em 0 0;}
+
+.all-invoice-full-wrapper-controls .act-radio-control{
+display:inline-block;
+margin:0 0.5em 1em 0;}
+
+
+.all-col-3{
+float:left;
+width:25%;
+margin:0 3%;}
+
+
+.all-col-3 label {
+width:7em!important;}
 
 /* *****************************************************************************
  * table Styles
@@ -2967,5 +3069,3 @@ width:4%;}
         position:relative;
         top:1px;
     }
-
-	.pac-container:after{ content:none !important; }

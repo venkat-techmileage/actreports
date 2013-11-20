@@ -17,6 +17,17 @@ $(document).ready(function(){
 			};
 			$( "#startDate" ).datepicker(pickerOpts);
 			$( "#endDate" ).datepicker(pickerOpts);
+			
+			$('#view-export-head').click(function(){
+				$(".view-export").slideToggle(function() { 
+					var property = $('.view-export').css('display');
+					if(property == 'block')
+						$('#view-export-head, #mainNav').addClass("active-toggle");
+				        else
+				        $('#view-export-head, #mainNav').removeClass("active-toggle");
+				});
+			});
+
 	
 			$("#radioAll").prop("checked", "checked");
 			$('input:text[name="searchInput"]').each(function(){
@@ -51,6 +62,7 @@ $(document).ready(function(){
 				if($("#startDate").val()!="" && $("#endDate").val()!="" && ($("#serviceCallDate").is(":checked") || $("#releaseDate").is(":checked"))){
 				//$('input:checkbox[name="checkAll"]').prop("checked", "checked");
 				//$('input:checkbox[name="check"]').prop("checked", "checked");
+				$(".view-export").css("display", "block");
 				if($("#byDataGroup").is(":checked")){
 					$('#alphabetical').find('input[type=checkbox]:checked').removeAttr('checked');
 					if($("div#dataGroup input:checkbox[name='check']:checked").length == 0) {
@@ -66,10 +78,10 @@ $(document).ready(function(){
 					}
 				}
 				populateCallList();
-				$("#radioAll").prop("checked", "checked");
-				 $('input:text[name="searchInput"]').each(function(){
+				/*//$("#radioAll").prop("checked", "checked");
+				$('input:text[name="searchInput"]').each(function(){
 					   $(this).attr("disabled", true);
-				   });				 
+				   });*/
 				}
 				else
 					alert("Invalid Date");
@@ -91,6 +103,7 @@ $(document).ready(function(){
 				  $("#alphabetical").hide();
 				  $('input:checkbox[name="checkAll"]').removeAttr("checked");
 				  $('input:checkbox[name="check"]').removeAttr("checked");
+				  $(".view-export").css("display", "none");
 				  $("#radioAll").prop("checked", "checked");
 					 $('input:text[name="searchInput"]').each(function(){
 						 $(this).attr("disabled", true);
@@ -122,6 +135,16 @@ $(document).ready(function(){
 			 $("#truckSearch").attr("disabled", false);
 			 getAutocomleteDetails("truck","#truckSearch" );
 		 });
+	 
+	 $("#towType").click(function(){
+		 
+		 $('input:text[name="searchInput"]').each(function(){
+			 $(this).val("");
+			   $(this).attr("disabled", true);
+		   });
+		 $("#towTypeSearch").attr("disabled", false);
+		 getAutocomleteDetails("towType","#towTypeSearch" );
+	 });
 	 
 	 $("#reason").click(function(){
 		 
@@ -240,14 +263,14 @@ $(document).ready(function(){
 }
  
 function CreateTable(obj, cols) {
-    var table = $('<table id="invoiceSearch"></table>');
+    var table = $('<table id="invoiceSearch" class="act-table"></table>');
     var th = $('<thead><tr></tr></thead>');
     for (var i = 0; i < cols.length; i++) {
         th.append('<th>' + headers[i] + '</th>');
     }
     table.append(th);
     //code for dynamic search text boxes in dynamic table.
-    var sth=$('<tr class="act_search_tab"></tr>');
+    var sth=$('<tr class="act-table-odd"></tr>');
     for (var i = 0; i < cols.length; i++) {
         sth.append('<td></td>');
     }
@@ -286,7 +309,7 @@ function setCallListTable(global_callList){
 
 	   if(callFilter.length>0){
 		   $('#Output').html(CreateTable(global_callList, callFilter));
-		   $('#invoiceSearch').columnFilters({alternateRowClassNames:['act_search_tab']});
+		   $('#invoiceSearch').columnFilters({alternateRowClassNames:['act-table-odd']});
 	   }else {
 		   
 		   $('#Output').html("");

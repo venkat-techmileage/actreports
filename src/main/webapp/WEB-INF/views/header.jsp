@@ -45,6 +45,10 @@ ddsmoothmenu.init({
 		{
 			color:#26352e;
 		}
+		.disp-search-cal
+		{
+			margin-top: 2%;
+		}
 		
 </style>
 </head>

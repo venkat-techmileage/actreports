@@ -34,84 +34,137 @@
 	<!--header start-->
 	<jsp:include page="header.jsp"/>
 	<!--header end-->
-	<div class="disp-search-cal">
-	<table width="80%">
-	<tr><td align="center">
-	<table>
-	<tr><td align="left"><input type="radio" name="dateSearch" id="serviceCallDate" checked="checked">Service Call Date</td></tr>
-	<tr></tr>
-	<tr><td align="left"><input type="radio" name="dateSearch" id="releaseDate">Release Date</td></tr>
-	</table>
-	</td>
-	<td></td>
-	<td>
-	<div class="calender">
-	<div class="act-calender-control">
-		From<input type="text" id="startDate" name="startDate"/>
-		to<input type="text" id="endDate" name="endDate"/>	
+	<!--main wrapper-->
+<div id="main-wrapper">
+<div class="container">
+
+<!--main wrapper starts-->
+<div class="tab-full-wrapper-2">
+<div class="allinvoices-wrapper">
+
+<div class="all-invoice-full-wrapper-controls">
+
+
+    
+        <div class="act-radio-control">
+        <label class="act-radio"><input type="radio" name="dateSearch" id="serviceCallDate" checked="checked">Service Call Date</label>
+        </div>
+
+        <div class="act-radio-control">
+        <label class="act-radio"><input type="radio" name="dateSearch" id="releaseDate">Release Date</label>
+        </div>
+		
+        <div class="act-calender-control">
+<label>From</label>
+<input type="text" id="startDate" name="startDate"/>
+<span class="calender-box"><a href="#" class="calender-icon"></a></span>
+</div>
+        
+		 
+        <div class="act-calender-control">
+<label>To</label>
+<input type="text" id="endDate" name="endDate"/>
+<span class="calender-box"><a href="#" class="calender-icon"></a></span>
+</div>
+		
+        <div class="act-button-controls">
+           <button type="submit" class="search-button-active" id="go">
+           Go</button></div>
+		   <div class="act-button-controls">
+           <button type="submit" class="search-button-active" id="clrInvSearch">
+           Clear</button> </div>
+           <div class="act-button-controls">
+           <button type="submit" class="green-center" id="invoiceExport">
+           Export To Excel</button> </div>           
+           
+</div>
+<form>
+<div class="all-invoice-full-wrapper-controls">
+
+    <fieldset>
+        <h4>Sort</h4>
+         <div class="act-radio-control">
+           <label class="act-radio">
+           <input type="radio" name="sortBy" id="byDataGroup">By Data Group</label>
+        </div>
+          <div class="act-radio-control">
+            <label class="act-radio">
+            <input type="radio" name="sortBy" id="byAlphabetical">Alphabetical</label>
+          </div>
+    </fieldset>
+</div>
+<div class="all-invoice-full-wrapper-controls">
+     <fieldset>
+     	<div class="all-col-3">
+         <div class="act-radio-control">
+           <label class="act-radio">
+           <input type="radio" name="radioSearch" id="driver">Driver</label>
+		  </div>
+		  
+		  <div class="act-textfield-control">
+          <input type="text" id="driverSearch" name="searchInput" class="mile"/>
+		  </div>
+        
+          <div class="act-radio-control">
+            <label class="act-radio">
+            <input type="radio" name="radioSearch" id="truck">Truck</label>
+			  </div>
+			  
+          <div class="act-textfield-control">
+          <input type="text" id="truckSearch" name="searchInput" class="mile"/>
+		  </div>
+</div>
+
+        <div class="all-col-3">
+          <div class="act-radio-control">
+           <label class="act-radio">
+           <input type="radio" name="radioSearch" id="towType">Tow Type</label>
+		     </div>
+			 
+        <div class="act-textfield-control">
+          <input type="text" id="towTypeSearch" name="searchInput" class="mile"/>
+		  </div>
+
+       
+          <div class="act-radio-control">
+            <label class="act-radio">
+            <input type="radio" name="radioSearch" id="reason">Reason</label>
+			</div>
+			
+            <div class="act-textfield-control">
+          <input type="text" id="reasonSearch" name="searchInput" class="mile"/>
+          </div>
+		  
+		  </div>
+		  
+		  <div class="all-col-3">
+          <div class="act-radio-control">
+           <label class="act-radio">
+           <input type="radio" name="radioSearch" id="account">Account</label>
+		    </div>
+			
+        <div class="act-textfield-control">
+          <input type="text" id="accountSearch" name="searchInput" class="mile"/>
+		  </div>
+        
+          <div class="act-radio-control">
+            <label class="act-radio">
+            <input type="radio" name="radioSearch" id="salesRep">Sales Rep</label>
+			</div>
+			
+          <div class="act-textfield-control">
+          <input type="text" id="salesRepSearch" name="searchInput" class="mile"/>
+		  </div>
+		  
+		  </div>
+    </fieldset>
+	
 	</div>
-	</div>
-	</td>	
-	<td>
-		<div class="act-button-controls">
-			<button type="submit" id="go" class="export">GO</button>
-			<button type="submit" id="invoiceExport" class="export">Export To Excel</button>
-			<button type="submit" id="clrInvSearch" class="export">Clear</button>
-		</div>
-	</td>
-	<td></td>
-	<td>
-		<fieldset>
-            <legend>Sort</legend>
-    			<div class="disp-search-cal">
-					<table>
-						<tr><td align="left"><input type="radio" name="sortBy" id="byDataGroup">By Data Group</td></tr>
-						<tr></tr>
-						<tr><td align="left"><input type="radio" name="sortBy" id="byAlphabetical">Alphabetical</td></tr>
-					</table>
-	        	</div>
-        </fieldset>
-   	</td>    	
-	</tr>
-	</table>
-	</div>
-	<div id="main-wrapper">
-	<div class="container">
-	<form id="allInvoices">
-	<div class="col-3" style="padding-top: 3%;">
-		<fieldset>
-			<table>
-			<tr>
-			<td><input type="radio" name="radioSearch" id="radioAll">All</td>
-			<td></td>
-			</tr>
-			<tr>
-			<td><input type="radio" name="radioSearch" id="driver">Driver</td>
-			<td><input type="text" id="driverSearch" name="searchInput"/></td>
-			</tr>
-			<tr>
-			<td><input type="radio" name="radioSearch" id="truck">Truck</td>
-			<td><input type="text" id="truckSearch" name="searchInput"/></td>
-			</tr>
-			<tr>
-			<td><input type="radio" name="radioSearch" id="reason">Reason</td>
-			<td><input type="text" id="reasonSearch" name="searchInput"/></td>
-			</tr>
-			<tr>
-			<td><input type="radio" name="radioSearch" id="account">Account</td>
-			<td><input type="text" id="accountSearch" name="searchInput"/></td>
-			</tr>
-			<tr>
-			<td><input type="radio" name="radioSearch" id="salesRep">Sales Rep</td>
-			<td><input type="text" id="salesRepSearch" name="searchInput"/></td>
-			</tr>
-			</table>
-		</fieldset>
-	</div>
-	<div class="wrapper-three-fourth">		
-				<fieldset>
-		            <legend>View / Export</legend>
-		            	<div class="act-checkbox-control" id="dataGroup">
+    <div class="clear"></div>
+	<div id="view-export-head"><h3>View/Export</h3></div>
+	<div class="view-export">
+    <fieldset>
+        <div class="act-checkbox-control" id="dataGroup">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 								<tr>
 									<td width="14%" valign="top">
@@ -337,13 +390,28 @@
 								</tr>
 							</table>						
 						</div>
-          	</fieldset>
-		<div id="Output" style="overflow: scroll;"></div>
-		</div>
-	</form>
+    </fieldset>
+    </div>
+</form>
+         <div class="all-invoice-table-wrapper">    
+       <div id="Output"></div>
+                    </div>
+                 </div>
+            </div>
+      
 	</div>
+	
+		<div style="clear:both;"></div>
+   	 	<!--tab wrapper end-->   		
 	</div>
-	<!--footer start-->
+	
+	<!--container end-->
+
+	<!--main wrapper end-->
+<div style="clear:both;"></div>
+
+<!--footer start-->
 	<jsp:include page="footer.jsp"/>
-	<!--footer end-->
+<!--footer end-->
+</body>
 </html>

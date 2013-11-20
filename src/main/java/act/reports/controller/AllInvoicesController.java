@@ -27,7 +27,7 @@ public class AllInvoicesController {
 	private AllInvoicesControllerHelper invoicesHelper;
 
 	
-	@RequestMapping("/allInvoices.html")
+	@RequestMapping(value="/allInvoices.html")
 	public String getHome(){
 		logger.info("In AllInvoicesController-getHome()...");
 		return "allInvoices";

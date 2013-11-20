@@ -9,7 +9,7 @@ public class DashboardController {
 
 	//private Logger logger=Logger.getLogger(DashboardController.class);
 	
-	@RequestMapping("/dashboard.html")
+	@RequestMapping({"/","/dashboard.html"})
 	public String getReportsDashboard(){
 		return "dashboard";
 	}
