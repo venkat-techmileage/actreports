@@ -1,55 +1,57 @@
 package act.reports.model;
 
+import java.util.List;
+
 public class Receipts {
-	
-	private String invoice = "";
-	private String account = "";
-	private String billTo = "";
-	private String paymentMethod = "";
-	private String amount = "";
-	private String userID = "";
+
 	private String location = "";
-		
-	public String getInvoice() {
-		return invoice;
-	}
-	public void setInvoice(String invoice) {
-		this.invoice = invoice;
-	}
-	public String getAccount() {
-		return account;
-	}
-	public void setAccount(String account) {
-		this.account = account;
-	}
-	public String getBillTo() {
-		return billTo;
-	}
-	public void setBillTo(String billTo) {
-		this.billTo = billTo;
-	}
-	public String getPaymentMethod() {
-		return paymentMethod;
-	}
-	public void setPaymentMethod(String paymentMethod) {
-		this.paymentMethod = paymentMethod;
-	}
-	public String getAmount() {
-		return amount;
-	}
-	public void setAmount(String amount) {
-		this.amount = amount;
-	}
-	public String getUserID() {
-		return userID;
-	}
-	public void setUserID(String userID) {
-		this.userID = userID;
-	}
+	private String fromDate = "";
+	private String toDate = "";
+	private String reportDate = "";
+	private String paymentTypeTotal = "";
+	List<ReceiptDetails> receiptDetails;
+	List<ReceiptTotals> receiptsTotals;
+	
 	public String getLocation() {
 		return location;
 	}
 	public void setLocation(String location) {
 		this.location = location;
+	}
+	public String getFromDate() {
+		return fromDate;
+	}
+	public void setFromDate(String fromDate) {
+		this.fromDate = fromDate;
+	}
+	public String getToDate() {
+		return toDate;
+	}
+	public void setToDate(String toDate) {
+		this.toDate = toDate;
+	}
+	public String getReportDate() {
+		return reportDate;
+	}
+	public void setReportDate(String reportDate) {
+		this.reportDate = reportDate;
+	}
+	public String getPaymentTypeTotal() {
+		return paymentTypeTotal;
+	}
+	public void setPaymentTypeTotal(String paymentTypeTotal) {
+		this.paymentTypeTotal = paymentTypeTotal;
+	}
+	public List<ReceiptDetails> getReceiptDetails() {
+		return receiptDetails;
+	}
+	public void setReceiptDetails(List<ReceiptDetails> receiptDetails) {
+		this.receiptDetails = receiptDetails;
+	}
+	public List<ReceiptTotals> getReceiptsTotals() {
+		return receiptsTotals;
+	}
+	public void setReceiptsTotals(List<ReceiptTotals> receiptsTotals) {
+		this.receiptsTotals = receiptsTotals;
 	}	
 }

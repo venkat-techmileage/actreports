@@ -4,6 +4,7 @@
 	xmlns:util="http://www.springframework.org/schema/util"
 	xmlns:mvc="http://www.springframework.org/schema/mvc" 
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jee="http://www.springframework.org/schema/jee"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans     
         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
@@ -12,31 +13,48 @@
         http://www.springframework.org/schema/util
         http://www.springframework.org/schema/util/spring-util-3.0.xsd
         http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd 
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
         
         <context:component-scan base-package="act.reports.*"></context:component-scan>
         <context:annotation-config />
         
         <util:properties id="excelProps" location="classpath:excelHeaders.properties"/>
-        <!--  <util:properties id="urlProps" location="classpath:url.properties"/> 
+        <!--  <util:properties id="urlProps" location="classpath:url.properties"/> -->
            
-        <bean id="restTemplate" class="org.springframework.web.client.RestTemplate"></bean>-->
+        <bean id="restTemplate" class="org.springframework.web.client.RestTemplate"></bean>
+        
+        <jee:jndi-lookup id="dataSource" jndi-name="java:/ACTMYSQLDS" resource-ref="true"/>
       
-        <context:property-placeholder location="WEB-INF/datasource.properties"/>
+        <context:property-placeholder location="WEB-INF/datasource.properties,WEB-INF/paymentDetails.properties"/>
 	
-		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+<!-- 		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 			<property name="driverClassName" value="${driver.class}"></property>
 			<property name="url" value="${jdbc.url}"></property>
 			<property name="username" value="${jdbc.user}"></property>
 			<property name="password" value="${jdbc.pass}"></property>
-		</bean>
-        <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		</bean>		-->
+		
+		    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
     		<constructor-arg name="dataSource" ref="dataSource"/>
     	</bean>
     	 <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
       		<property name="dataSource"  ref="dataSource" />    
    		</bean>
-    	<bean id="viewResolver1" class="org.springframework.web.servlet.view.XmlViewResolver">
+   		<bean id="payClient" class="act.reports.model.PaymentClient">
+			<property name="loginID" value="${pay.loginID}"></property>
+			<property name="transactionKey" value="${pay.transactionKey}"></property>
+			<property name="testMode" value="${pay.testMode}"></property>
+			<property name="url" value="${pay.url}"></property>
+			<property name="firstName" value="${pay.first_name}"></property>
+			<property name="lastName" value="${pay.last_name}"></property>
+			<property name="city" value="${pay.city}"></property>
+			<property name="email" value="${pay.email}"></property>
+			<property name="relayRes" value="${pay.relayRes}"></property>
+			<property name="relayUrl" value="${pay.relayUrl}"></property>
+	 	</bean>
+	 	<bean id="viewResolver1" class="org.springframework.web.servlet.view.XmlViewResolver">
   			<property name="order" value="1"/>
   			<property name="location" value="/WEB-INF/views.xml"/>
        </bean>		
@@ -47,8 +65,28 @@
     		<property name="prefix" value="/WEB-INF/views/"/>
     		<property name="suffix" value=".jsp"/>
 		</bean>
-		<!-- <bean id="status" class="act.dispatcher.model.newservicecall.ServiceStatus"></bean> 
-		<bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/> -->
+		<bean id="status" class="act.reports.model.ServiceStatus"></bean> 
+		<!-- <bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/> -->
+		<bean id="PreAuthSessionFilter" class="act.reports.filters.PreAuthSessionFilter"/>
+		
+		<!-- Mailing Service -->
+		<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+			<property name="host" value="mail.techmileage.com" />
+			<property name="port" value="26" />
+			<property name="username" value="venkat@techmileage.com" />
+			<property name="password" value="tempe123" />
+			<property name="javaMailProperties">
+				<props>
+					<prop key="mail.transport.protocol">smtp</prop>
+	                <prop key="mail.smtp.auth">true</prop>
+	                <prop key="mail.smtp.starttls.enable">true</prop>
+	                <prop key="mail.debug">true</prop>
+				</props>
+			</property>
+		</bean>
+		<bean id="mailService" class="act.reports.service.MailingService">
+		<constructor-arg ref="mailSender"></constructor-arg>
+		</bean>
 		
         <mvc:resources mapping="/resources/**" location="/resources/"/>
         <mvc:annotation-driven/>

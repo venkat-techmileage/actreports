@@ -134,7 +134,17 @@
 	<groupId>org.apache.poi</groupId>
 	<artifactId>poi</artifactId>
 	<version>3.7</version>
-</dependency>          
+</dependency> 
+<dependency>
+	<groupId>com.itextpdf</groupId>
+	<artifactId>itextpdf</artifactId>
+	<version>5.0.6</version>
+</dependency>
+ <dependency>
+    <groupId>javax.mail</groupId>
+    <artifactId>mail</artifactId>
+    <version>1.4.5</version>
+</dependency>         
   </dependencies>
   <build>
     <finalName>actreports</finalName>

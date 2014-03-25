@@ -25,165 +25,168 @@ public class AllInvoicesControllerHelper {
 		List<Map<String,String>> excelDetails=new ArrayList<Map<String,String>>();
 		try 
 		{
-			//for(int i=0;i<invoicesList.getInvoice().size();i++)
 			for(int i=0;i<invoicesList.getRecCount();i++)
 			{
 				Map<String,String> excelExpireData=new LinkedHashMap<String,String>();
-				if(invoicesList.getServiceCallDate()!=null)
+				if(invoicesList.getServiceCallDate()!=null && i<invoicesList.getServiceCallDate().size())
 					excelExpireData.put("serviceCallDate", invoicesList.getServiceCallDate().get(i));
-				if(invoicesList.getInvoice()!=null)
+				if(invoicesList.getInvoice()!=null && i<invoicesList.getInvoice().size())
 					excelExpireData.put("invoice", invoicesList.getInvoice().get(i));
-				if(invoicesList.getRequestedBy()!=null)
+				if(invoicesList.getRequestedBy()!=null && i<invoicesList.getRequestedBy().size())
 					excelExpireData.put("requestedBy", invoicesList.getRequestedBy().get(i));
-				if(invoicesList.getSalesRep()!=null)
+				if(invoicesList.getSalesRep()!=null && i<invoicesList.getSalesRep().size())
 					excelExpireData.put("salesRep", invoicesList.getSalesRep().get(i));
-				if(invoicesList.getRatePlan()!=null)
+				if(invoicesList.getRatePlan()!=null && i<invoicesList.getRatePlan().size())
 					excelExpireData.put("ratePlan", invoicesList.getRatePlan().get(i));
-				if(invoicesList.getPriorityAndReason()!=null)
-					excelExpireData.put("priorityAndReason", invoicesList.getPriorityAndReason().get(i));
-				if(invoicesList.getTowType()!=null)
+				if(invoicesList.getPriority()!=null && i<invoicesList.getPriority().size())
+					excelExpireData.put("priority", invoicesList.getPriority().get(i));
+				if(invoicesList.getReason()!=null && i<invoicesList.getReason().size())
+					excelExpireData.put("reason", invoicesList.getReason().get(i));
+				/*if(invoicesList.getPriorityAndReason()!=null && i<invoicesList.getPriorityAndReason().size())
+					excelExpireData.put("priorityAndReason", invoicesList.getPriorityAndReason().get(i));*/
+				if(invoicesList.getTowType()!=null && i<invoicesList.getTowType().size())
 					excelExpireData.put("towType", invoicesList.getTowType().get(i));
-				if(invoicesList.getOrDr()!=null)
+				if(invoicesList.getOrDr()!=null && i<invoicesList.getOrDr().size())
 					excelExpireData.put("orDr", invoicesList.getOrDr().get(i));
-				if(invoicesList.getDriverLicense()!=null)
+				if(invoicesList.getDriverLicense()!=null && i<invoicesList.getDriverLicense().size())
 					excelExpireData.put("driverLicense", invoicesList.getDriverLicense().get(i));
-				if(invoicesList.getDriverIsOwner()!=null)
+				if(invoicesList.getDriverIsOwner()!=null && i<invoicesList.getDriverIsOwner().size())
 					excelExpireData.put("driverIsOwner", invoicesList.getDriverIsOwner().get(i));
-				if(invoicesList.getNoOwnerInfo()!=null)
+				if(invoicesList.getNoOwnerInfo()!=null && i<invoicesList.getNoOwnerInfo().size())
 					excelExpireData.put("noOwnerInfo", invoicesList.getNoOwnerInfo().get(i));
-				if(invoicesList.getRegisteredOwner()!=null)
+				if(invoicesList.getRegisteredOwner()!=null && i<invoicesList.getRegisteredOwner().size())
 					excelExpireData.put("registeredOwner", invoicesList.getRegisteredOwner().get(i));
-				if(invoicesList.getRegisteredOwnerName()!=null)
+				if(invoicesList.getRegisteredOwnerName()!=null && i<invoicesList.getRegisteredOwnerName().size())
 					excelExpireData.put("registeredOwnerName", invoicesList.getRegisteredOwnerName().get(i));
-				if(invoicesList.getRegisteredOwnerAddress()!=null)
+				if(invoicesList.getRegisteredOwnerAddress()!=null && i<invoicesList.getRegisteredOwnerAddress().size())
 					excelExpireData.put("registeredOwnerAddress", invoicesList.getRegisteredOwnerAddress().get(i));
-				if(invoicesList.getRegisteredOwnerCity()!=null)
+				if(invoicesList.getRegisteredOwnerCity()!=null && i<invoicesList.getRegisteredOwnerCity().size())
 					excelExpireData.put("registeredOwnerCity", invoicesList.getRegisteredOwnerCity().get(i));
-				if(invoicesList.getRegisteredOwnerState()!=null)
+				if(invoicesList.getRegisteredOwnerState()!=null && i<invoicesList.getRegisteredOwnerState().size())
 					excelExpireData.put("registeredOwnerState", invoicesList.getRegisteredOwnerState().get(i));
-				if(invoicesList.getRegisteredOwnerZip()!=null)
+				if(invoicesList.getRegisteredOwnerZip()!=null && i<invoicesList.getRegisteredOwnerZip().size())
 					excelExpireData.put("registeredOwnerZip", invoicesList.getRegisteredOwnerZip().get(i));
-				if(invoicesList.getRegisteredOwnerPhone()!=null)
+				if(invoicesList.getRegisteredOwnerPhone()!=null && i<invoicesList.getRegisteredOwnerPhone().size())
 					excelExpireData.put("registeredOwnerPhone", invoicesList.getRegisteredOwnerPhone().get(i));
-				if(invoicesList.getRegisteredOwnerEmail()!=null)
+				if(invoicesList.getRegisteredOwnerEmail()!=null && i<invoicesList.getRegisteredOwnerEmail().size())
 					excelExpireData.put("registeredOwnerEmail", invoicesList.getRegisteredOwnerEmail().get(i));
-				if(invoicesList.getYear()!=null)
+				if(invoicesList.getYear()!=null && i<invoicesList.getYear().size())
 					excelExpireData.put("year", invoicesList.getYear().get(i));
-				if(invoicesList.getMake()!=null)
+				if(invoicesList.getMake()!=null && i<invoicesList.getMake().size())
 					excelExpireData.put("make", invoicesList.getMake().get(i));
-				if(invoicesList.getModel()!=null)
+				if(invoicesList.getModel()!=null && i<invoicesList.getModel().size())
 					excelExpireData.put("model", invoicesList.getModel().get(i));
-				if(invoicesList.getColor()!=null)
+				if(invoicesList.getColor()!=null && i<invoicesList.getColor().size())
 					excelExpireData.put("color", invoicesList.getColor().get(i));
-				if(invoicesList.getStyle()!=null)
+				if(invoicesList.getStyle()!=null && i<invoicesList.getStyle().size())
 					excelExpireData.put("style", invoicesList.getStyle().get(i));
-				if(invoicesList.getVin()!=null)
+				if(invoicesList.getVin()!=null && i<invoicesList.getVin().size())
 					excelExpireData.put("vin", invoicesList.getVin().get(i));
-				if(invoicesList.getPlateCountry()!=null)
+				if(invoicesList.getPlateCountry()!=null && i<invoicesList.getPlateCountry().size())
 					excelExpireData.put("plateCountry", invoicesList.getPlateCountry().get(i));
-				if(invoicesList.getPlateState()!=null)
+				if(invoicesList.getPlateState()!=null && i<invoicesList.getPlateState().size())
 					excelExpireData.put("plateState", invoicesList.getPlateState().get(i));
-				if(invoicesList.getPlate()!=null)
+				if(invoicesList.getPlate()!=null && i<invoicesList.getPlate().size())
 					excelExpireData.put("plate", invoicesList.getPlate().get(i));
-				if(invoicesList.getKeys()!=null)
+				if(invoicesList.getKeys()!=null && i<invoicesList.getKeys().size())
 					excelExpireData.put("keys", invoicesList.getKeys().get(i));
-				if(invoicesList.getRadio()!=null)
+				if(invoicesList.getRadio()!=null && i<invoicesList.getRadio().size())
 					excelExpireData.put("radio", invoicesList.getRadio().get(i));
-				if(invoicesList.getVehicleStatus()!=null)
+				if(invoicesList.getVehicleStatus()!=null && i<invoicesList.getVehicleStatus().size())
 					excelExpireData.put("vehicleStatus", invoicesList.getVehicleStatus().get(i));
-				if(invoicesList.getCommercialUnit()!=null)
+				if(invoicesList.getCommercialUnit()!=null && i<invoicesList.getCommercialUnit().size())
 					excelExpireData.put("commercialUnit", invoicesList.getCommercialUnit().get(i));
-				if(invoicesList.getPoliceImpound()!=null)
+				if(invoicesList.getPoliceImpound()!=null && i<invoicesList.getPoliceImpound().size())
 					excelExpireData.put("policeImpound", invoicesList.getPoliceImpound().get(i));
-				if(invoicesList.getCallTime()!=null)
+				if(invoicesList.getCallTime()!=null && i<invoicesList.getCallTime().size())
 					excelExpireData.put("callTime", invoicesList.getCallTime().get(i));
-				if(invoicesList.getDispatchTime()!=null)
+				if(invoicesList.getDispatchTime()!=null && i<invoicesList.getDispatchTime().size())
 					excelExpireData.put("dispatchTime", invoicesList.getDispatchTime().get(i));
-				if(invoicesList.getAcceptedTime()!=null)
+				if(invoicesList.getAcceptedTime()!=null && i<invoicesList.getAcceptedTime().size())
 					excelExpireData.put("acceptedTime", invoicesList.getAcceptedTime().get(i));
-				if(invoicesList.getEnrouteTime()!=null)
+				if(invoicesList.getEnrouteTime()!=null && i<invoicesList.getEnrouteTime().size())
 					excelExpireData.put("enrouteTime", invoicesList.getEnrouteTime().get(i));
-				if(invoicesList.getArrivedTime()!=null)
+				if(invoicesList.getArrivedTime()!=null && i<invoicesList.getArrivedTime().size())
 					excelExpireData.put("arrivedTime", invoicesList.getArrivedTime().get(i));
-				if(invoicesList.getHookedTime()!=null)
+				if(invoicesList.getHookedTime()!=null && i<invoicesList.getHookedTime().size())
 					excelExpireData.put("hookedTime", invoicesList.getHookedTime().get(i));
-				if(invoicesList.getDroppedTime()!=null)
+				if(invoicesList.getDroppedTime()!=null && i<invoicesList.getDroppedTime().size())
 					excelExpireData.put("droppedTime", invoicesList.getDroppedTime().get(i));
-				if(invoicesList.getClearTime()!=null)
+				if(invoicesList.getClearTime()!=null && i<invoicesList.getClearTime().size())
 					excelExpireData.put("clearTime", invoicesList.getClearTime().get(i));
-				if(invoicesList.getTotalTime()!=null)
+				if(invoicesList.getTotalTime()!=null && i<invoicesList.getTotalTime().size())
 					excelExpireData.put("totalTime", invoicesList.getTotalTime().get(i));
-				if(invoicesList.getPickupLocation()!=null)
+				if(invoicesList.getPickupLocation()!=null && i<invoicesList.getPickupLocation().size())
 					excelExpireData.put("pickupLocation", invoicesList.getPickupLocation().get(i));
-				if(invoicesList.getPickupAddress()!=null)
+				if(invoicesList.getPickupAddress()!=null && i<invoicesList.getPickupAddress().size())
 					excelExpireData.put("pickupAddress", invoicesList.getPickupAddress().get(i));
-				if(invoicesList.getPickupCity()!=null)
+				if(invoicesList.getPickupCity()!=null && i<invoicesList.getPickupCity().size())
 					excelExpireData.put("pickupCity", invoicesList.getPickupCity().get(i));
-				if(invoicesList.getPickupState()!=null)
+				if(invoicesList.getPickupState()!=null && i<invoicesList.getPickupState().size())
 					excelExpireData.put("pickupState", invoicesList.getPickupState().get(i));
-				if(invoicesList.getPickupZipcode()!=null)
+				if(invoicesList.getPickupZipcode()!=null && i<invoicesList.getPickupZipcode().size())
 					excelExpireData.put("pickupZipcode", invoicesList.getPickupZipcode().get(i));
-				if(invoicesList.getDropOffLocation()!=null)
+				if(invoicesList.getDropOffLocation()!=null && i<invoicesList.getDropOffLocation().size())
 					excelExpireData.put("dropOffLocation", invoicesList.getDropOffLocation().get(i));
-				if(invoicesList.getDropOffAddress()!=null)
+				if(invoicesList.getDropOffAddress()!=null && i<invoicesList.getDropOffAddress().size())
 					excelExpireData.put("dropOffAddress", invoicesList.getDropOffAddress().get(i));
-				if(invoicesList.getDropOffCity()!=null)
+				if(invoicesList.getDropOffCity()!=null && i<invoicesList.getDropOffCity().size())
 					excelExpireData.put("dropOffCity", invoicesList.getDropOffCity().get(i));
-				if(invoicesList.getDropOffState()!=null)
+				if(invoicesList.getDropOffState()!=null && i<invoicesList.getDropOffState().size())
 					excelExpireData.put("dropOffState", invoicesList.getDropOffState().get(i));
-				if(invoicesList.getDropOffZipcode()!=null)
+				if(invoicesList.getDropOffZipcode()!=null && i<invoicesList.getDropOffZipcode().size())
 					excelExpireData.put("dropOffZipcode", invoicesList.getDropOffZipcode().get(i));
-				if(invoicesList.getTruck()!=null)
+				if(invoicesList.getTruck()!=null && i<invoicesList.getTruck().size())
 					excelExpireData.put("truck", invoicesList.getTruck().get(i));
-				if(invoicesList.getDriverId()!=null)
+				if(invoicesList.getDriverId()!=null && i<invoicesList.getDriverId().size())
 					excelExpireData.put("driverId", invoicesList.getDriverId().get(i));
-				if(invoicesList.getDispatchId()!=null)
+				if(invoicesList.getDispatchId()!=null && i<invoicesList.getDispatchId().size())
 					excelExpireData.put("dispatchId", invoicesList.getDispatchId().get(i));
-				if(invoicesList.getCallReceiverId()!=null)
+				if(invoicesList.getCallReceiverId()!=null && i<invoicesList.getCallReceiverId().size())
 					excelExpireData.put("callReceiverId", invoicesList.getCallReceiverId().get(i));
-				if(invoicesList.getTowCharge()!=null)
+				if(invoicesList.getTowCharge()!=null && i<invoicesList.getTowCharge().size())
 					excelExpireData.put("towCharge", invoicesList.getTowCharge().get(i));
-				if(invoicesList.getStorageCharge()!=null)
+				if(invoicesList.getStorageCharge()!=null && i<invoicesList.getStorageCharge().size())
 					excelExpireData.put("storageCharge", invoicesList.getStorageCharge().get(i));
-				if(invoicesList.getLaborCharge()!=null)
+				if(invoicesList.getLaborCharge()!=null && i<invoicesList.getLaborCharge().size())
 					excelExpireData.put("laborCharge", invoicesList.getLaborCharge().get(i));
-				if(invoicesList.getMileageCharge()!=null)
+				if(invoicesList.getMileageCharge()!=null && i<invoicesList.getMileageCharge().size())
 					excelExpireData.put("mileageCharge", invoicesList.getMileageCharge().get(i));
-				if(invoicesList.getWinchCharge()!=null)
+				if(invoicesList.getWinchCharge()!=null && i<invoicesList.getWinchCharge().size())
 					excelExpireData.put("winchCharge", invoicesList.getWinchCharge().get(i));
-				if(invoicesList.getGateCharge()!=null)
+				if(invoicesList.getGateCharge()!=null && i<invoicesList.getGateCharge().size())
 					excelExpireData.put("gateCharge", invoicesList.getGateCharge().get(i));
-				if(invoicesList.getAdminCharge()!=null)
+				if(invoicesList.getAdminCharge()!=null && i<invoicesList.getAdminCharge().size())
 					excelExpireData.put("adminCharge", invoicesList.getAdminCharge().get(i));
-				if(invoicesList.getMiscChargeDesc()!=null)
+				if(invoicesList.getMiscChargeDesc()!=null && i<invoicesList.getMiscChargeDesc().size())
 					excelExpireData.put("miscChargeDesc", invoicesList.getMiscChargeDesc().get(i));
-				if(invoicesList.getMiscCharge()!=null)
+				if(invoicesList.getMiscCharge()!=null && i<invoicesList.getMiscCharge().size())
 					excelExpireData.put("miscCharge", invoicesList.getMiscCharge().get(i));
-				if(invoicesList.getDiscounts()!=null)
+				if(invoicesList.getDiscounts()!=null && i<invoicesList.getDiscounts().size())
 					excelExpireData.put("discounts", invoicesList.getDiscounts().get(i));
-				if(invoicesList.getTotalCharges()!=null)
+				if(invoicesList.getTotalCharges()!=null && i<invoicesList.getTotalCharges().size())
 					excelExpireData.put("totalCharges", invoicesList.getTotalCharges().get(i));
-				if(invoicesList.getAmountPaid()!=null)
+				if(invoicesList.getAmountPaid()!=null && i<invoicesList.getAmountPaid().size())
 					excelExpireData.put("amountPaid", invoicesList.getAmountPaid().get(i));
-				if(invoicesList.getInStorage()!=null)
+				if(invoicesList.getInStorage()!=null && i<invoicesList.getInStorage().size())
 					excelExpireData.put("inStorage", invoicesList.getInStorage().get(i));
-				if(invoicesList.getBillTo()!=null)
+				if(invoicesList.getBillTo()!=null && i<invoicesList.getBillTo().size())
 					excelExpireData.put("billTo", invoicesList.getBillTo().get(i));
-				if(invoicesList.getReleasedTo()!=null)
+				if(invoicesList.getReleasedTo()!=null && i<invoicesList.getReleasedTo().size())
 					excelExpireData.put("releasedTo", invoicesList.getReleasedTo().get(i));
-				if(invoicesList.getReleaseTime()!=null)
+				if(invoicesList.getReleaseTime()!=null && i<invoicesList.getReleaseTime().size())
 					excelExpireData.put("releaseTime", invoicesList.getReleaseTime().get(i));
-				if(invoicesList.getReleaseDate()!=null)
+				if(invoicesList.getReleaseDate()!=null && i<invoicesList.getReleaseDate().size())
 					excelExpireData.put("releaseDate", invoicesList.getReleaseDate().get(i));
-				if(invoicesList.getAvrFiledDate()!=null)
+				if(invoicesList.getAvrFiledDate()!=null && i<invoicesList.getAvrFiledDate().size())
 					excelExpireData.put("avrFiledDate", invoicesList.getAvrFiledDate().get(i));
-				if(invoicesList.getTrnsfrOfAuth()!=null)
+				if(invoicesList.getTrnsfrOfAuth()!=null && i<invoicesList.getTrnsfrOfAuth().size())
 					excelExpireData.put("trnsfrOfAuth", invoicesList.getTrnsfrOfAuth().get(i));
-				if(invoicesList.getTitleDate()!=null)
+				if(invoicesList.getTitleDate()!=null && i<invoicesList.getTitleDate().size())
 					excelExpireData.put("titleDate", invoicesList.getTitleDate().get(i));
-				if(invoicesList.getLocked()!=null)
+				if(invoicesList.getLocked()!=null && i<invoicesList.getLocked().size())
 					excelExpireData.put("locked", invoicesList.getLocked().get(i));
-				if(invoicesList.getClosed()!=null)
+				if(invoicesList.getClosed()!=null && i<invoicesList.getClosed().size())
 					excelExpireData.put("closed", invoicesList.getClosed().get(i));
 				excelDetails.add(excelExpireData);
 			}
@@ -211,8 +214,12 @@ public class AllInvoicesControllerHelper {
 					excelHeaders.add(excelProps.getProperty("invoices.excel.header.salesRep"));
 				if(invoicesList.getRatePlan()!=null)
 					excelHeaders.add(excelProps.getProperty("invoices.excel.header.ratePlan"));
-				if(invoicesList.getPriorityAndReason()!=null)
-					excelHeaders.add(excelProps.getProperty("invoices.excel.header.priorityAndReason"));
+				if(invoicesList.getPriority()!=null)
+					excelHeaders.add(excelProps.getProperty("invoices.excel.header.priority"));
+				if(invoicesList.getReason()!=null)
+					excelHeaders.add(excelProps.getProperty("invoices.excel.header.reason"));
+				/*if(invoicesList.getPriorityAndReason()!=null)
+					excelHeaders.add(excelProps.getProperty("invoices.excel.header.priorityAndReason"));*/
 				if(invoicesList.getTowType()!=null)
 					excelHeaders.add(excelProps.getProperty("invoices.excel.header.towType"));
 				if(invoicesList.getOrDr()!=null)
@@ -357,84 +364,6 @@ public class AllInvoicesControllerHelper {
 					excelHeaders.add(excelProps.getProperty("invoices.excel.header.locked"));
 				if(invoicesList.getClosed()!=null)
 					excelHeaders.add(excelProps.getProperty("invoices.excel.header.closed"));
-				/*excelHeaders.add(excelProps.getProperty("invoices.list.excel.header1"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header2"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header3"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header4"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header5"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header6"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header7"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header8"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header9"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header10"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header11"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header12"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header13"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header14"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header15"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header16"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header17"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header18"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header19"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header20"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header21"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header22"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header23"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header24"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header25"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header26"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header27"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header28"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header29"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header30"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header31"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header32"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header33"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header34"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header35"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header36"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header37"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header38"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header39"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header40"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header41"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header42"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header43"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header44"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header45"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header46"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header47"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header48"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header49"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header50"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header51"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header52"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header53"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header54"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header55"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header56"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header57"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header58"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header59"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header60"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header61"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header62"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header63"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header64"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header65"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header66"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header67"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header68"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header69"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header70"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header71"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header72"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header73"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header74"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header75"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header76"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header77"));
-				excelHeaders.add(excelProps.getProperty("invoices.list.excel.header78"));*/
 			}
 		}
 		catch (Exception e) {

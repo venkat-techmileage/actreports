@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import org.apache.log4j.Logger;
 
@@ -19,13 +20,14 @@ public class DateUtility {
 	
 	private static final String MYSQL_DATE_FORMAT="yyyy-MM-dd";
 	private static final String MYSQL_DATETIME = "yyyy-MM-dd HH:mm:ss";
+	//private static final String DATE_FORMAT="MM-dd-yyyy";
+	private static final String DATETIME_FORMAT = "MM-dd-yyyy HH:mm:ss";
 	
 	public static Timestamp convertDateTime(String dateStr)
 	{
 		SimpleDateFormat format=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 		java.util.Date dt=new java.util.Date();
-		Timestamp mysqlTS=null;
-		
+		Timestamp mysqlTS=null;		
 		try {
 			dt=format.parse(dateStr);
 			mysqlTS=new Timestamp(dt.getTime());
@@ -34,9 +36,9 @@ public class DateUtility {
 			logger.error(e);
 			e.printStackTrace();
 		}
-		return mysqlTS;
-		
+		return mysqlTS;		
 	}
+	
 	public static String convertAsMySqlDateTime(String dateStr)
 	{		
 		//logger.info(dateStr);
@@ -53,9 +55,64 @@ public class DateUtility {
 			e.printStackTrace();
 		}
 		//logger.info(convertedDateStr);
-		return convertedDateStr;
-		
+		return convertedDateStr;		
 	}
+	
+	public static String convertToDateTimeFormat(String dateStr)
+	{		
+		Date parsedDate = null;
+		String convertedDateStr = "";
+		SimpleDateFormat sdf = new SimpleDateFormat(MYSQL_DATETIME);
+		SimpleDateFormat sdf1 = new SimpleDateFormat(DATETIME_FORMAT);		
+		try{
+			parsedDate = sdf.parse(dateStr);
+			convertedDateStr = sdf1.format(parsedDate);
+		//System.out.println("convertedDateStr = "+convertedDateStr);
+		} catch (ParseException e) {
+			System.out.println(e);
+			e.printStackTrace();
+		}
+		return convertedDateStr;		
+	}
+	
+	public static String getOneDayBeforeDate(String dateStr)
+	{		
+		SimpleDateFormat sdf = new SimpleDateFormat(MYSQL_DATE_FORMAT);
+		Calendar cal = Calendar.getInstance();
+		String oneDayBeforeDateStr = "";
+		try{
+			Date parsedDate = sdf.parse(dateStr);
+			cal.setTime(parsedDate);
+			cal.add(Calendar.DAY_OF_YEAR,-1);
+			Date oneDayBeforeDate= cal.getTime();
+			oneDayBeforeDateStr = sdf.format(oneDayBeforeDate);						
+		} 
+		catch (ParseException e){
+			logger.error(e);
+			e.printStackTrace();
+		}
+		return oneDayBeforeDateStr;		
+	}
+	
+	public static int getDaysBetweenTwoDates(String d1, String d2) 
+	{
+		Calendar cal1 = new GregorianCalendar();
+	    Calendar cal2 = new GregorianCalendar();
+	    int diffDays = 0;
+	    try{
+	    	cal1.set(Integer.parseInt(d1.substring(0,4)), Integer.parseInt(d1.substring(5,7)), Integer.parseInt(d1.substring(8))); 
+	       	cal2.set(Integer.parseInt(d2.substring(0,4)), Integer.parseInt(d2.substring(5,7)), Integer.parseInt(d2.substring(8)));
+	       	Date date1 = cal1.getTime();
+			Date date2 = cal2.getTime();
+			diffDays = (int)( (date2.getTime() - date1.getTime()) / (1000 * 60 * 60 * 24));
+	    }
+	    catch (Exception e) {
+			logger.error(e);
+			e.printStackTrace();
+		}
+		return diffDays;
+	}
+	
 	public static Timestamp currentTimeStamp()
 	{
 		
@@ -66,6 +123,7 @@ public class DateUtility {
 		return mysqlTS;
 		
 	}
+	
 	public static String convertAsMySqlDateString(String dateString)
 	{
 		
@@ -74,8 +132,7 @@ public class DateUtility {
 		
 		try {
 				dt=format.parse(dateString);
-				dateString=getDisplayDate(new Date(dt.getTime()),MYSQL_DATE_FORMAT);
-				
+				dateString=getDisplayDate(new Date(dt.getTime()),MYSQL_DATE_FORMAT);				
 		    }
 		catch (ParseException e) {
 			logger.error(e);
@@ -83,22 +140,7 @@ public class DateUtility {
 		return dateString;
 
 	}
-	public static String convertAsMySqlDateString(String dateString,String dateFormat)
-	{
-		
-		SimpleDateFormat format=new SimpleDateFormat(dateFormat);
-		java.util.Date dt=new java.util.Date();
-		
-		try {
-				dt=format.parse(dateString);
-				dateString=getDisplayDate(new Date(dt.getTime()),MYSQL_DATE_FORMAT);
-		    }
-		catch (ParseException e) {
-			logger.error(e);
-		}
-		return dateString;
-
-	}
+	
 	public static boolean isFormattedDate(String dateString, String dateFormat)
 	{
 		boolean status=false;
@@ -150,6 +192,7 @@ public class DateUtility {
 		DateFormat dateFormat = new SimpleDateFormat(MYSQL_DATETIME);
 		return dateFormat.format(dt);
 	}
+	
 	public static String getCurrentDate(String format)
 	{
 		SimpleDateFormat dateformat=new SimpleDateFormat(format);
@@ -163,8 +206,8 @@ public class DateUtility {
 			SimpleDateFormat dtFormat=new SimpleDateFormat(format);
 			return dtFormat.format(date);
 		}
-		else return null;
-		
+		else 
+			return null;		
 	}
 	
 	public static String getDisplayTime(java.util.Calendar date, String format)

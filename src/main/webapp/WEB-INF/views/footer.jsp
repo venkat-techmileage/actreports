@@ -8,7 +8,8 @@
 </head>
 <body>
 <body>
-<div id="footer" style="margin-top: 80px;">Copyright &copy; 2013 ACT Towing Company, All Rights Reserved</div>
+<!-- <div id="footer" style="margin-top: 80px;">Copyright &copy; 2013 ACT Towing Company, All Rights Reserved</div> -->
+<div id="footer">Copyright &copy; 2013 ACT Towing Company, All Rights Reserved</div>
 </body>
 </body>
 </html>

@@ -31,6 +31,8 @@ left: 0px;
 display: none; /*collapse all sub menus to begin with*/
 visibility: hidden;
 background:#2d7ec0;
+top:27px!important;
+
 }
 
 /*Sub level menu list items (undo style from Top level List Items)*/
@@ -39,23 +41,31 @@ display: list-item;
 float: none;
 list-style-type:none;
 background:none;
-border-top:1px solid #3687c9;
 padding:0px!important;
 margin:0px!important;}
 
 
 /* Sub level menu links style */
 #menu ul li ul li a{
-padding:0 0 0 10px;
+display:block;
+padding:0px 16px 0px 26px!important;
 margin: 0;
 font-size:12px;
+border-top:1px solid #3687c9;
+cursor:pointer;
 color:#ffffff!important;
 text-shadow:1px 1px 1px #2A5C8A!important;
+border-right:none;
+line-height:34px;
+height:34px;
 }
 
+#menu ul li ul li a:hover{
+background:#3687c9;
+}
 
-#menu ul li ul li:hover{
-background:#3687c9;}
+/*#menu ul li ul li:hover{
+background:#3687c9;}*/
 
 /* Holly Hack for IE \*/
 * html #menu{height: 1%;} /*Holly Hack for IE7 and below*/

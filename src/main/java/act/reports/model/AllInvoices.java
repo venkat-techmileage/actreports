@@ -3,25 +3,26 @@ package act.reports.model;
 
 public class AllInvoices {
 
+	private String serviceCallId = "";
 	private String serviceCallDate = "";
 	private String invoice = "";
 	private String requestedBy = "";
 	private String salesRep = "";
-	private Integer ratePlan;
-	/*private Integer priority;
-	private String reason = "";*/
-	private String priorityAndReason = "";
+	private String ratePlan;
+	private Integer priority;
+	private String reason = "";
+	//private String priorityAndReason = "";
 	private String towType = "";
 	private String orDr = "";
 	private String driverLicense = "";
-	private Integer driverIsOwner;
+	private String driverIsOwner;
 	private String noOwnerInfo = "";
-	private String registeredOwner = "";
+	//private String registeredOwner = "";
 	private String registeredOwnerName = "";
 	private String registeredOwnerAddress = "";
 	private String registeredOwnerCity = "";
 	private String registeredOwnerState = "";
-	private Integer registeredOwnerZip;
+	private String registeredOwnerZip;
 	private String registeredOwnerEmail = "";
 	private String registeredOwnerPhone = "";
 	private Integer year;
@@ -34,8 +35,10 @@ public class AllInvoices {
 	private String plateState = "";
 	private String plate = "";
 	private String keys = "";
-	private String rodio = "";
+	private String keysLocation = "";
+	private String radio = "";
 	private String vehicleStatus = "";
+	private String vehicleMileage = "";
 	private String commercialUnit = "";
 	private String policeImpound = "";
 	private String callTime = "";
@@ -58,40 +61,55 @@ public class AllInvoices {
 	private String dropOffState = "";
 	private Integer dropOffZipcode;
 	private Integer truck;
-	private Integer driverId;
+	private String driverId;
 	private String dispatchId = "";
 	private String callReceiverId = "";
-	private Float towCharge = 0f;
-	private Float storageCharge = 0f;
-	private Float laborCharge = 0f;
-	private Float mileageCharge = 0f;
-	private Float winchCharge = 0f;
-	private Float gateCharge = 0f;
-	private Float adminCharge = 0f;
+	private String towCharge = "";
+	private String storageCharge = "";
+	private String laborCharge = "";
+	private String mileageCharge = "";
+	private String winchCharge = "";
+	private String gateCharge = "";
+	private String adminCharge = "";
 	private String miscChargeDesc = "";
-	private Float miscCharge = 0f;
-	private Float discounts = 0f;
-	private Float totalCharges = 0f;
-	private Integer amountPaid = 0;
+	private String miscCharge = "";
+	private String discounts = "";
+	private String totalCharges = "";
+	private String amountPaid = "";
 	private String inStorage = "";
+	private String poNo = "";
 	private String billTo = "";
 	private String releasedTo = "";
 	private String releaseTime = "";
-	private String releaseDate = "";
+	private String releaseDate = "";	
+	private String avrFiledDate = "";
+	private String trnsfrOfAuth = "";
 	private String avrSentDate = "";
 	private String avrReceivedDate = "";
 	private String titleDate = "";
 	private String locked = "";
 	private String closed = "";
 	
-	public String getPriorityAndReason() {
-		return priorityAndReason;
+	public String getServiceCallId() {
+		return serviceCallId;
 	}
-	public void setPriorityAndReason(String priorityAndReason) {
-		this.priorityAndReason = priorityAndReason;
-	}	
+	public void setServiceCallId(String serviceCallId) {
+		this.serviceCallId = serviceCallId;
+	}
 	public String getServiceCallDate() {
 		return serviceCallDate;
+	}
+	public Integer getPriority() {
+		return priority;
+	}
+	public void setPriority(Integer priority) {
+		this.priority = priority;
+	}
+	public String getReason() {
+		return reason;
+	}
+	public void setReason(String reason) {
+		this.reason = reason;
 	}
 	public void setServiceCallDate(String serviceCallDate) {
 		this.serviceCallDate = serviceCallDate;
@@ -113,11 +131,11 @@ public class AllInvoices {
 	}
 	public void setSalesRep(String salesRep) {
 		this.salesRep = salesRep;
-	}
-	public Integer getRatePlan() {
+	}	
+	public String getRatePlan() {
 		return ratePlan;
 	}
-	public void setRatePlan(Integer ratePlan) {
+	public void setRatePlan(String ratePlan) {
 		this.ratePlan = ratePlan;
 	}
 	public String getTowType() {
@@ -137,11 +155,11 @@ public class AllInvoices {
 	}
 	public void setDriverLicense(String driverLicense) {
 		this.driverLicense = driverLicense;
-	}
-	public Integer getDriverIsOwner() {
+	}	
+	public String getDriverIsOwner() {
 		return driverIsOwner;
 	}
-	public void setDriverIsOwner(Integer driverIsOwner) {
+	public void setDriverIsOwner(String driverIsOwner) {
 		this.driverIsOwner = driverIsOwner;
 	}
 	public String getNoOwnerInfo() {
@@ -150,12 +168,12 @@ public class AllInvoices {
 	public void setNoOwnerInfo(String noOwnerInfo) {
 		this.noOwnerInfo = noOwnerInfo;
 	}
-	public String getRegisteredOwner() {
+	/*public String getRegisteredOwner() {
 		return registeredOwner;
 	}
 	public void setRegisteredOwner(String registeredOwner) {
 		this.registeredOwner = registeredOwner;
-	}
+	}*/
 	public String getRegisteredOwnerName() {
 		return registeredOwnerName;
 	}
@@ -180,10 +198,10 @@ public class AllInvoices {
 	public void setRegisteredOwnerState(String registeredOwnerState) {
 		this.registeredOwnerState = registeredOwnerState;
 	}
-	public Integer getRegisteredOwnerZip() {
+	public String getRegisteredOwnerZip() {
 		return registeredOwnerZip;
 	}
-	public void setRegisteredOwnerZip(Integer registeredOwnerZip) {
+	public void setRegisteredOwnerZip(String registeredOwnerZip) {
 		this.registeredOwnerZip = registeredOwnerZip;
 	}
 	public String getRegisteredOwnerEmail() {
@@ -258,17 +276,29 @@ public class AllInvoices {
 	public void setKeys(String keys) {
 		this.keys = keys;
 	}
-	public String getRodio() {
-		return rodio;
+	public String getKeysLocation() {
+		return keysLocation;
 	}
-	public void setRodio(String rodio) {
-		this.rodio = rodio;
+	public void setKeysLocation(String keysLocation) {
+		this.keysLocation = keysLocation;
 	}
 	public String getVehicleStatus() {
 		return vehicleStatus;
 	}
+	public String getRadio() {
+		return radio;
+	}
+	public void setRadio(String radio) {
+		this.radio = radio;
+	}
 	public void setVehicleStatus(String vehicleStatus) {
 		this.vehicleStatus = vehicleStatus;
+	}
+	public String getVehicleMileage() {
+		return vehicleMileage;
+	}
+	public void setVehicleMileage(String vehicleMileage) {
+		this.vehicleMileage = vehicleMileage;
 	}
 	public String getCommercialUnit() {
 		return commercialUnit;
@@ -401,11 +431,11 @@ public class AllInvoices {
 	}
 	public void setTruck(Integer truck) {
 		this.truck = truck;
-	}
-	public Integer getDriverId() {
+	}	
+	public String getDriverId() {
 		return driverId;
 	}
-	public void setDriverId(Integer driverId) {
+	public void setDriverId(String driverId) {
 		this.driverId = driverId;
 	}
 	public String getDispatchId() {
@@ -420,46 +450,46 @@ public class AllInvoices {
 	public void setCallReceiverId(String callReceiverId) {
 		this.callReceiverId = callReceiverId;
 	}
-	public Float getTowCharge() {
+	public String getTowCharge() {
 		return towCharge;
 	}
-	public void setTowCharge(Float towCharge) {
+	public void setTowCharge(String towCharge) {
 		this.towCharge = towCharge;
 	}
-	public Float getStorageCharge() {
+	public String getStorageCharge() {
 		return storageCharge;
 	}
-	public void setStorageCharge(Float storageCharge) {
+	public void setStorageCharge(String storageCharge) {
 		this.storageCharge = storageCharge;
 	}
-	public Float getMileageCharge() {
+	public String getMileageCharge() {
 		return mileageCharge;
 	}
-	public Float getLaborCharge() {
+	public String getLaborCharge() {
 		return laborCharge;
 	}
-	public void setLaborCharge(Float laborCharge) {
+	public void setLaborCharge(String laborCharge) {
 		this.laborCharge = laborCharge;
 	}
-	public void setMileageCharge(Float mileageCharge) {
+	public void setMileageCharge(String mileageCharge) {
 		this.mileageCharge = mileageCharge;
 	}
-	public Float getWinchCharge() {
+	public String getWinchCharge() {
 		return winchCharge;
 	}
-	public void setWinchCharge(Float winchCharge) {
+	public void setWinchCharge(String winchCharge) {
 		this.winchCharge = winchCharge;
 	}
-	public Float getGateCharge() {
+	public String getGateCharge() {
 		return gateCharge;
 	}
-	public void setGateCharge(Float gateCharge) {
+	public void setGateCharge(String gateCharge) {
 		this.gateCharge = gateCharge;
 	}
-	public Float getAdminCharge() {
+	public String getAdminCharge() {
 		return adminCharge;
 	}
-	public void setAdminCharge(Float adminCharge) {
+	public void setAdminCharge(String adminCharge) {
 		this.adminCharge = adminCharge;
 	}
 	public String getMiscChargeDesc() {
@@ -468,28 +498,28 @@ public class AllInvoices {
 	public void setMiscChargeDesc(String miscChargeDesc) {
 		this.miscChargeDesc = miscChargeDesc;
 	}
-	public Float getMiscCharge() {
+	public String getMiscCharge() {
 		return miscCharge;
 	}
-	public void setMiscCharge(Float miscCharge) {
+	public void setMiscCharge(String miscCharge) {
 		this.miscCharge = miscCharge;
 	}
-	public Float getDiscounts() {
+	public String getDiscounts() {
 		return discounts;
 	}
-	public void setDiscounts(Float discounts) {
+	public void setDiscounts(String discounts) {
 		this.discounts = discounts;
 	}
-	public Float getTotalCharges() {
+	public String getTotalCharges() {
 		return totalCharges;
 	}
-	public void setTotalCharges(Float totalCharges) {
+	public void setTotalCharges(String totalCharges) {
 		this.totalCharges = totalCharges;
 	}
-	public Integer getAmountPaid() {
+	public String getAmountPaid() {
 		return amountPaid;
 	}
-	public void setAmountPaid(Integer amountPaid) {
+	public void setAmountPaid(String amountPaid) {
 		this.amountPaid = amountPaid;
 	}
 	public String getInStorage() {
@@ -497,6 +527,12 @@ public class AllInvoices {
 	}
 	public void setInStorage(String inStorage) {
 		this.inStorage = inStorage;
+	}
+	public String getPoNo() {
+		return poNo;
+	}
+	public void setPoNo(String poNo) {
+		this.poNo = poNo;
 	}
 	public String getBillTo() {
 		return billTo;
@@ -521,6 +557,18 @@ public class AllInvoices {
 	}
 	public void setReleaseDate(String releaseDate) {
 		this.releaseDate = releaseDate;
+	}
+	public String getAvrFiledDate() {
+		return avrFiledDate;
+	}
+	public void setAvrFiledDate(String avrFiledDate) {
+		this.avrFiledDate = avrFiledDate;
+	}
+	public String getTrnsfrOfAuth() {
+		return trnsfrOfAuth;
+	}
+	public void setTrnsfrOfAuth(String trnsfrOfAuth) {
+		this.trnsfrOfAuth = trnsfrOfAuth;
 	}
 	public String getAvrSentDate() {
 		return avrSentDate;
@@ -551,6 +599,5 @@ public class AllInvoices {
 	}
 	public void setClosed(String closed) {
 		this.closed = closed;
-	}
-	
+	}	
 }

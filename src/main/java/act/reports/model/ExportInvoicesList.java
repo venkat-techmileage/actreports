@@ -10,7 +10,9 @@ public class ExportInvoicesList {
 	private List<String> requestedBy;
 	private List<String> salesRep;
 	private List<String> ratePlan;
-	private List<String> priorityAndReason;
+	private List<String> priority;
+	private List<String> reason;
+	//private List<String> priorityAndReason;
 	private List<String> towType;
 	private List<String> orDr;
 	private List<String> driverLicense;
@@ -120,14 +122,20 @@ public class ExportInvoicesList {
 	public void setRatePlan(List<String> ratePlan) {
 		this.ratePlan = ratePlan;
 	}
-	public List<String> getPriorityAndReason() {
-		return priorityAndReason;
-	}
-	public void setPriorityAndReason(List<String> priorityAndReason) {
-		this.priorityAndReason = priorityAndReason;
-	}
 	public List<String> getTowType() {
 		return towType;
+	}
+	public List<String> getPriority() {
+		return priority;
+	}
+	public void setPriority(List<String> priority) {
+		this.priority = priority;
+	}
+	public List<String> getReason() {
+		return reason;
+	}
+	public void setReason(List<String> reason) {
+		this.reason = reason;
 	}
 	public void setTowType(List<String> towType) {
 		this.towType = towType;

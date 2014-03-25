@@ -43,7 +43,7 @@ public class ExcelCreater extends AbstractExcelView
 			response.setHeader("Content-Disposition", "attachment; filename="+fileName);
 		    
 		    // create a new Excel sheet
-		    HSSFSheet sheet = workbook.createSheet("All Invoices");
+		    HSSFSheet sheet = workbook.createSheet("Sheet1");
 		    sheet.setDefaultColumnWidth(20);
 		    
 		    // create style for header cells

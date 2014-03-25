@@ -3,48 +3,41 @@ package act.reports.model;
 import java.util.List;
 
 public class ReasonCodeDetailsList {
+
+	private List<String> reason;
+	private List<String> noOfTows;
+	private List<String> totalCharges;
+	private List<String> use;
+	private List<String> chargesPerTow;
 	
-	List<ReasonCodeDetails> reasonCodeDetails;
-	private String fromDate = "";
-	private String toDate = "";
-	private String totalTows = "";
-	private String sumOfTotalCharges = "";
-	private String avgChargePerTow = "";
-	
-	public List<ReasonCodeDetails> getReasonCodeDetails() {
-		return reasonCodeDetails;
+	public List<String> getReason() {
+		return reason;
 	}
-	public void setReasonCodeDetails(List<ReasonCodeDetails> reasonCodeDetails) {
-		this.reasonCodeDetails = reasonCodeDetails;
+	public void setReason(List<String> reason) {
+		this.reason = reason;
 	}
-	public String getFromDate() {
-		return fromDate;
+	public List<String> getNoOfTows() {
+		return noOfTows;
 	}
-	public void setFromDate(String fromDate) {
-		this.fromDate = fromDate;
+	public void setNoOfTows(List<String> noOfTows) {
+		this.noOfTows = noOfTows;
 	}
-	public String getToDate() {
-		return toDate;
+	public List<String> getTotalCharges() {
+		return totalCharges;
 	}
-	public void setToDate(String toDate) {
-		this.toDate = toDate;
+	public void setTotalCharges(List<String> totalCharges) {
+		this.totalCharges = totalCharges;
 	}
-	public String getTotalTows() {
-		return totalTows;
+	public List<String> getUse() {
+		return use;
 	}
-	public void setTotalTows(String totalTows) {
-		this.totalTows = totalTows;
+	public void setUse(List<String> use) {
+		this.use = use;
 	}
-	public String getSumOfTotalCharges() {
-		return sumOfTotalCharges;
+	public List<String> getChargesPerTow() {
+		return chargesPerTow;
 	}
-	public void setSumOfTotalCharges(String sumOfTotalCharges) {
-		this.sumOfTotalCharges = sumOfTotalCharges;
-	}
-	public String getAvgChargePerTow() {
-		return avgChargePerTow;
-	}
-	public void setAvgChargePerTow(String avgChargePerTow) {
-		this.avgChargePerTow = avgChargePerTow;
-	}
+	public void setChargesPerTow(List<String> chargesPerTow) {
+		this.chargesPerTow = chargesPerTow;
+	}	
 }
